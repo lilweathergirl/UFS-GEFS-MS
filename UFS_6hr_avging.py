@@ -13,11 +13,11 @@ import numpy as np
 # These forecast files are for the August 2011 SE heat wave event specifically. 
 # UFS initalizes their forecasts every seven days starting 1-05-2000
 forecast1_10 = '/Path/to/my/UFS_File/tmp_2m_2011072700.nc'
-forecast11_35 = '/Path/to/my/UFS_File/tmp_2m_2011072700.nc'
+forecast11_35 = '/Path/to/my/UFS_File/tmp_2m_2011072700_regrid.nc'
 
 # Load in both datasets since UFS GEFS has their forecast lead times in separate files. 
-# Lead times 1-10 are in one file and 11-35 in another. 
-# Instead of merging the two data sets prior to averaging, I do it after 
+# Lead times 1-10 are in one file and 11-35 in another. The resolution is different between lead times 1-10 & 11-35
+# Therefore the lead times 11-35 needed to be regridded to 0.25x0.25 resolution to match both LTs 1-20 and AIWP models.  
 ds1_10 = xr.open_dataset(forecast1_10)
 ds11_35 = xr.open_dataset(forecast11_35)
 
